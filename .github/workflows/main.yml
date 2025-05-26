@@ -1,0 +1,26 @@
+name: Weather Notifier
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * *' # 毎日07:00 JST（22:00 UTC）
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest # osの選択
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # pythonのバージョン
+
+      - name: Install dependencies
+        run: pip install requests # pip install
+
+      - name: Run weather notifier
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }} # 環境変数
+        run: python test_notify.py # 起動するファイル
