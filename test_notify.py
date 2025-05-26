@@ -1,7 +1,7 @@
 import requests
 import os
 
-WEBHOOK_URL = os.environ["webhook_url"]
+WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
 livedoor_URL = "https://weather.tsukumijima.net/api/forecast/city/130010" # 東京を選択
 weather = requests.get(livedoor_URL).json() # 天気を取得してjsonに整形する
 
