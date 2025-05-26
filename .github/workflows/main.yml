@@ -3,7 +3,7 @@ name: Weather Notifier
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4 * * *' # 毎日07:00 JST（22:00 UTC）
+    - cron: '*/5 * * * *' # 毎日07:00 JST（22:00 UTC）
 
 jobs:
   notify:
